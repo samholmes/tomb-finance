@@ -78,7 +78,8 @@ export class TombFinance {
     this.fetchMasonryVersionOfUser()
       .then((version) => (this.masonryVersionOfUser = version))
       .catch((err) => {
-        console.error(`Failed to fetch masonry version: ${err.stack}`);
+        const stack: string = (err as any).stack
+        console.error(`Failed to fetch masonry version: ${stack}`);
         this.masonryVersionOfUser = 'latest';
       });
   }
@@ -412,7 +413,8 @@ export class TombFinance {
         return await pool.pendingShare(poolId, account);
       }
     } catch (err) {
-      console.error(`Failed to call earned() on pool ${pool.address}: ${err.stack}`);
+      const stack: string = (err as any).stack
+      console.error(`Failed to call earned() on pool ${pool.address}: ${stack}`);
       return BigNumber.from(0);
     }
   }
@@ -423,7 +425,8 @@ export class TombFinance {
       let userInfo = await pool.userInfo(poolId, account);
       return await userInfo.amount;
     } catch (err) {
-      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${(err.stack)}`);
+      const stack: string = (err as any).stack
+      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${(stack)}`);
       return BigNumber.from(0);
     }
   }
