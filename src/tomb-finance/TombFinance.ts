@@ -9,7 +9,7 @@ import { TransactionResponse } from '@ethersproject/providers';
 import ERC20 from './ERC20';
 import { getFullDisplayBalance, getDisplayBalance, getBalance } from '../utils/formatBalance';
 import { getDefaultProvider } from '../utils/provider';
-import IUniswapV2PairABI from './IUniswapV2Pair.abi.json';
+import IUniswapV2PairABI from '../../abi/IUniswapV2Pair.abi.json';
 import config, { bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
@@ -423,7 +423,7 @@ export class TombFinance {
       let userInfo = await pool.userInfo(poolId, account);
       return await userInfo.amount;
     } catch (err) {
-      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${err.stack}`);
+      console.error(`Failed to call balanceOf() on pool ${pool.address}: ${(err.stack)}`);
       return BigNumber.from(0);
     }
   }

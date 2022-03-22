@@ -2,6 +2,12 @@
   "name": "tomb-finance",
   "version": "0.1.0",
   "private": true,
+  "main": "lib/index.js",
+  "files": [
+    "abi/**/*",
+    "deployments/**/*",
+    "lib/**/*"
+  ],
   "dependencies": {
     "@ethersproject/providers": "^5.0.9",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -49,10 +55,10 @@
     "web3": "^1.2.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI= GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "clean": "rimraf lib",
+    "lib": "sucrase -q -t typescript,imports -d ./lib ./src",
+    "prepare": "npm-run-all clean -p lib types",
+    "types": "tsc"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -74,6 +80,8 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
-    "prettier": "2.3.1"
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.3.1",
+    "sucrase": "^3.20.3"
   }
 }

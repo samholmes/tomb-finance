@@ -1,7 +1,7 @@
 // import { ChainId } from '@pancakeswap-libs/sdk';
 import { ChainId } from '@spookyswap/sdk';
 import { Configuration } from './tomb-finance/config';
-import { BankInfo } from './tomb-finance';
+import { BankInfo } from '.';
 
 const configurations: { [env: string]: Configuration } = {
   development: {
@@ -9,7 +9,7 @@ const configurations: { [env: string]: Configuration } = {
     networkName: 'Fantom Opera Testnet',
     ftmscanUrl: 'https://testnet.ftmscan.com',
     defaultProvider: 'https://rpc.testnet.fantom.network/',
-    deployments: require('./tomb-finance/deployments/deployments.testing.json'),
+    deployments: require('../deployments/deployments.testing.json'),
     externalTokens: {
       WFTM: ['0xf1277d1ed8ad466beddf92ef448a132661956621', 18],
       FUSDT: ['0xb7f24e6e708eabfaa9e64b40ee21a5adbffb51d6', 6],
@@ -30,7 +30,7 @@ const configurations: { [env: string]: Configuration } = {
     networkName: 'Fantom Opera Mainnet',
     ftmscanUrl: 'https://ftmscan.com',
     defaultProvider: 'https://rpcapi.fantom.network/',
-    deployments: require('./tomb-finance/deployments/deployments.mainnet.json'),
+    deployments: require('../deployments/deployments.mainnet.json'),
     externalTokens: {
       WFTM: ['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83', 18],
       FUSDT: ['0x04068DA6C83AFCFA0e13ba15A6696662335D5B75', 6], // This is actually usdc on mainnet not fusdt
