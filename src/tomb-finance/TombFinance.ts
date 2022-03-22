@@ -10,7 +10,7 @@ import ERC20 from './ERC20';
 import { getFullDisplayBalance, getDisplayBalance, getBalance } from '../utils/formatBalance';
 import { getDefaultProvider } from '../utils/provider';
 import IUniswapV2PairABI from '../../abi/IUniswapV2Pair.abi.json';
-import config, { bankDefinitions } from '../config';
+import config, { bankDefinitions, configurations } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
 import { FTM_TICKER, SPOOKY_ROUTER_ADDR, TOMB_TICKER } from '../utils/constants';
@@ -33,9 +33,9 @@ export class TombFinance {
   TBOND: ERC20;
   FTM: ERC20;
 
-  constructor(cfg: Configuration) {
+  constructor(cfg: Configuration = configurations['production']) {
     const { deployments, externalTokens } = cfg;
-    const provider = getDefaultProvider();
+    const provider = getDefaultProvider(cfg);
 
     // loads contracts from deployments
     this.contracts = {};
